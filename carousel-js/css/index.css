@@ -5,24 +5,25 @@
 a{
 	text-decoration: none;
 }
-.container{
+.container{				/* 设置容器为图片大小，用来展示图片，相对定位，溢出部分隐藏*/
 	position: relative;
-	width: 436px;
+	width: 400px;
 	height: 300px;
 	margin: 100px auto 0 auto;
-	box-shadow: 0 0 5px green;
+	box-shadow: 0 0 15px green;
 	overflow: hidden;
+	border-radius: 20px;
 }
-.wrap{
+.wrap{ 						/* 图片的第一容器，大小为所有图片的总和，绝对定位，展示第一张图片*/
 	position: absolute;
-	width: 1744px;
+	width: 2400px;
 	height: 300px;
-	left: -436px;
+	left: -400px;
 	z-index: 1;
 }
-.container .wrap img{
+.container .wrap img{  /* 设置图片大小 */
 	float: left;
-	width: 436px;
+	width: 400px;
 	height: 300px;
 }
 .container .buttons{
@@ -47,7 +48,7 @@ a{
 .container .buttons span.on{
 	background-color: red;
 }
-.container .arrow{
+.container .arrow{		/* 设置箭头的属性，默认为隐藏 */
 	position: absolute;
 	top: 35%;
 	color: green;
@@ -63,9 +64,9 @@ a{
 .container .arrow_right{
 	right: 10px;
 }
-.container:hover .arrow{
+.container:hover .arrow{		/* 鼠标悬浮在容器的时候显示箭头 */
 	display: block;
 }
 .container .arrow:hover{
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.3);
 }
