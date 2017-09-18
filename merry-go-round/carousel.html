@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 实现旋转木马</title>
+	<link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+	<div id="stage">
+		<div id="container">
+			<img src="img/1.jpeg" style="transform: rotateY(0deg) translateZ(295.840px);">
+			<img src="img/2.jpeg" style="transform: rotateY(40deg) translateZ(295.840px);">
+			<img src="img/3.jpeg" style="transform: rotateY(80deg) translateZ(295.840px);">
+			<img src="img/4.jpeg" style="transform: rotateY(120deg) translateZ(295.840px);">
+			<img src="img/5.jpeg" style="transform: rotateY(160deg) translateZ(295.840px);">
+			<img src="img/6.jpeg" style="transform: rotateY(200deg) translateZ(295.840px);">
+			<img src="img/7.jpeg" style="transform: rotateY(240deg) translateZ(295.840px);">
+			<img src="img/8.jpeg" style="transform: rotateY(280deg) translateZ(295.840px);">
+			<img src="img/9.jpeg" style="transform: rotateY(320deg) translateZ(295.840px);">
+		</div>
+	</div>
+</body>
+<script>
+	var container = document.getElementById("container");
+	var index = 0;
+	container.addEventListener("click",function(){
+		this.style.transform = "rotateY(" +-40*++index+"deg)";
+	})
+</script>
+</html>
