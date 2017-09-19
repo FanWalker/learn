@@ -1,14 +1,12 @@
 # demo
 
-### 学习记录：
-
-#### 一、H5+JS+CSS3 实现圣诞情缘
+## 一、H5+JS+CSS3 实现圣诞情缘
 
 效果展示：http://fanwalker.com/ChristmasGift/index.html
 
 源码地址：[https://github.com/FanWalker/ChristmasGift](https://github.com/FanWalker/ChristmasGift)
 
-#### 二、css3实现旋转木马
+## 二、css3实现旋转木马
 
 效果展示：[demo](http://fanwalker.com/learn/merry-go-round/carousel.html)
 
