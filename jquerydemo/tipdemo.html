@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#texttip{
+			margin-left: 40px;
+		}
+		p{
+			display:inline-block;
+		}
+		ul{
+			position: relative;
+			width: 650px;
+			height: 100px;
+		}
+		ul li,ul li a{
+			display:inline-block;
+			width: 150px;
+			height: 100px;
+			list-style: none;
+		}
+		ul li img{
+			width: 150px;
+			height: 100px;
+		}
+	</style>
+</head>
+<!-- 超链接和图片提示效果 -->
+<body>
+	<div id="texttip">
+		<p><a href="#" class="tooltip" title="自定义链接提示1">链接提示1</a></p>
+		<p><a href="#" class="tooltip" title="自定义链接提示2">链接提示2</a></p>
+		<p><a href="#" title="自带提示1">自带提示1</a></p>
+		<p><a href="#" title="自带提示2">自带提示2</a></p>
+	</div>
+	<ul>
+		<li><a href="#" class="imgtip" title="图1"><img class="imgtip" src="https://i.imgur.com/uys02qt.jpg" alt="图1"></a></li>
+		<li><a href="#" class="imgtip" title="图2"><img class="imgtip" src="https://i.ytimg.com/vi/gZmKoZ65Nxg/maxresdefault.jpg" alt="图2"></a></li>
+		<li><a href="#" class="imgtip" title="图3"><img class="imgtip" src="https://pbs.twimg.com/media/CgAswi5UYAA8rF-.jpg" alt="图3"></a></li>
+		<li><a href="#" class="imgtip" title="图4"><img class="imgtip" src="https://pbs.twimg.com/media/CgqJYEYUYAAV1Qq.jpg" alt="图4"></a></li>
+	</ul>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function(){
+	var x = 10;
+	var y = 20;
+	$("a.tooltip").mouseover(function(e){
+		this.myTitle = this.title;
+		this.title = "";
+		var tooltip = "<div id='tooltip'>"+this.myTitle+"</div>";  //创建div元素
+		$("body").append(tooltip);    //追加到html文档中
+		$("#tooltip")                 //添加样式
+			.css({
+				"position": "absolute",
+				"border": "1px solid black",
+				"top": e.pageY + "px",
+				"left": e.pageX + "px"
+			})      //设置div的x和y坐标，并显示
+		})
+	.mouseout(function(){
+		this.title = this.myTitle;
+		$("#tooltip").remove();
+	})
+	.mousemove(function(e){
+		$("#tooltip")
+			.css({
+				"top": (e.pageY+y) + "px",
+				"left": (e.pageX+ x)+ "px"
+			});
+		});
+
+
+	$("img.imgtip").mouseover(function(e){
+		this.myTitle = this.alt;
+		this.title = "";
+		var imgTitle = this.myTitle ? "<br/>" +this.myTitle:"";
+		var imgtip = "<div id='imgtip'><img src='" +this.src +"' alt='图片预览图'/>"+ imgTitle+"</div>";
+		$("body").append(imgtip);
+		$("#imgtip")
+			.css({
+				"position": "absolute",
+				"border": "1px solid black",
+				"top": (e.pageY+y)  + "px",
+				"left": (e.pageX+x) + "px"
+			});
+		$("#imgtip img")
+			.css({
+				"width": "500px",
+				"height": "300px"
+			})
+		})
+		.mouseout(function(){
+			this.alt = this.myTitle;
+			$("#imgtip").remove();
+		})
+		.mousemove(function(e){
+			$("#imgtip")
+				.css({
+					"top": (e.pageY+y) + "px",
+					"left": (e.pageX+x)+ "px"
+				});
+			});
+	})
+</script>
+</html>
