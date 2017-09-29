@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="drawing" width="1400" height="400">你的浏览器不支持canvas</canvas>
+</body>
+<script>
+	var drawing = document.getElementById("drawing");
+	if(drawing.getContext){
+		var context = drawing.getContext("2d"); //取得2d上下文对象
+
+		/*2d上下文的两种基本绘图操作是填充和描边
+		 *context.strokeStyle = "red";  这是描边
+		 *context.fillStyle = "#0000ff";  这是填充
+		 */
+		 //填充
+		context.fillStyle = "#ff0000";
+		context.fillRect(10,10,50,50);
+		context.fillStyle = "#0000ff";
+		context.fillRect(30,30,50,50);
+		context.clearRect(40,40,10,10); //clearRect()方法可以清除画布上的矩形区域
+		//描边
+		context.strokeStyle = "#ff0000";
+		context.strokeRect(50,50,70,70);
+		context.strokeStyle = "#0000ff";
+		context.strokeRect(70,70,70,70);
+
+		//绘制路径
+
+		context.beginPath();//开始路径
+		/*
+		 *绘制外圆
+		 *(100,100)为圆心，半径99，起始角度结束角度分别为0和2*Math.PI, false为顺时针放行
+		 */			
+		context.arc(200,200,99,0,2*Math.PI, false);
+		//绘制内圆
+		context.moveTo(294,200);   //将点移动到内圆上（194，100）
+		context.arc(200,200,94,0,2*Math.PI, false)
+		//绘制分针
+		context.moveTo(200,200);  //将点移动到圆心上
+		context.lineTo(200,115);
+		//绘制时针
+		context.moveTo(200,200);
+		context.lineTo(135,200);
+		//描边路径
+		context.stroke();
+
+		/*绘制文本
+		 *主要方法fillText()和strokeText()
+		*/
+		context.font = "bold 14px Arival";
+		context.textAlign = "center";
+		context.textBaseline = "bottom";
+		context.fillText("12",200,120);
+		context.textBaseline = "middle";
+		context.fillText("9",115,200);
+
+		var length = 200;
+		var height = length*Math.sin(Math.PI/3);//计算等边三角形的高
+		context.moveTo(500,200);
+		context.lineTo(500+length/2,200-height);
+		context.lineTo(500+length,200);
+		context.lineTo(500,200);
+		context.stroke();
+
+
+	}
+</script>
+</html>
