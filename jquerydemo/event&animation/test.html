@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery中的事件和动画</title>
+	<link rel="stylesheet" href="test.css">
+</head>
+<body>
+	<div class="movie_show">
+		<div class="movie_caption">
+			<!-- 头部标题与按钮等 -->
+			<h2 class="caption lf" title="卡通动漫">卡通动漫</h2>
+			<div class="highlight_tip lf">
+				<span class="current">1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+			</div>
+			<div class="change_btn lf">
+				<span class="prev">上一页</span>
+				<span class="next">下一页</span>
+			</div>
+			<em class="rt"><a href="#">更多</a></em>
+		</div>
+		<div class="movie_content">
+			<div class="movie_list">
+				<ul class="lf">
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$("span.next").click(function(){
+		var $parent = $(this).parents("div.movie_show");
+		var $movie_list = $parent.find("div.movie_list");
+		var $movie_content = $parent.find("div.movie_content")
+	})
+</script>
+</html>
