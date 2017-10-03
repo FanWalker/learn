@@ -13,8 +13,6 @@
 			<div class="highlight_tip lf">
 				<span class="current">1</span>
 				<span>2</span>
-				<span>3</span>
-				<span>4</span>
 			</div>
 			<div class="change_btn lf">
 				<span class="prev">上一页</span>
@@ -47,7 +45,22 @@
 					</li>
 					<li>
 						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
-						<h4><a href="#">海贼王</a></h4>
+						<h4><a href="#">海贼王2</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王2</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王2</a></h4>
+						<span>播放:<em>28,276</em></span>
+					</li>
+					<li>
+						<a href=""><img src="https://pic8.qiyipic.com/image/20170715/ed/a7/a_100013977_m_601_m9_180_236.jpg" alt=""></a>
+						<h4><a href="#">海贼王2</a></h4>
 						<span>播放:<em>28,276</em></span>
 					</li>
 				</ul>
@@ -57,10 +70,50 @@
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+	var page = 1;
+	var i = 4;
+	
+	$("span.prev").click(function(){
+	     var $parent = $(this).parents("div.movie_show");//根据当前点击元素获取到父元素
+		 var $movie_list = $parent.find("div.movie_list"); //寻找到“视频内容展示区域”
+		 var $movie_content = $parent.find("div.movie_content"); //寻找到“视频内容展示区域”外围的DIV元素
+
+		 var v_width = $movie_content.width();
+		 var len = $movie_list.find("li").length;
+		 var page_count = Math.ceil(len / i) ;   //只要不是整数，就往大的方向取最小的整数
+
+		 if( !$movie_list.is(":animated") ){    //判断“视频内容展示区域”是否正在处于动画
+		 	 if( page == 1 ){  //已经到第一个版面了,如果再向前，必须跳转到最后一个版面。
+				$movie_list.animate({ left : '-='+v_width*(page_count-1) }, "slow");
+				page = page_count;
+			}else{
+				$movie_list.animate({ left : '+='+v_width }, "slow");
+				page--;
+			}
+			$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+		}
+    });
+
 	$("span.next").click(function(){
 		var $parent = $(this).parents("div.movie_show");
 		var $movie_list = $parent.find("div.movie_list");
-		var $movie_content = $parent.find("div.movie_content")
-	})
+		var $movie_content = $parent.find("div.movie_content");
+
+		var v_width = $movie_content.width();
+		var len = $movie_list.find("li").length;
+		var page_count = Math.ceil(len/i);
+		if(!$movie_list.is(":animated")){
+			if(page == page_count){
+			$movie_list.animate({left:'0px'},"slow");
+			page = 1;
+			}
+			else{
+				$movie_list.animate({left : '-='+v_width}, "slow");
+				page++;
+			}
+			$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+		}
+		
+	});
 </script>
 </html>
