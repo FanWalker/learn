@@ -22,7 +22,6 @@
 			newLeft = parseInt(current)-400;
 		}
 		wrap.style.left = newLeft + "px";
-		//console.log("当前left "+wrap.style.left);
 
 	}
 	function prev_pic(){
@@ -40,7 +39,6 @@
 			newLeft = parseInt(current)+400;
 		}
 		wrap.style.left = newLeft + "px";
-		//console.log("当前left "+wrap.style.left);
 	}
 
 
@@ -78,13 +76,11 @@
 				var current = getComputedStyle(wrap,false)["left"],
 					newLeft;
 				var currentLeft = parseInt(current);
-				//console.log(index+" "+currentLeft);
+
 				if(index ==3 &&  currentLeft!==-1600){
-					//console.log("chuxian1 "+currentLeft);
 					gap = gap - 4;
 				}
 				if(index == 0 && currentLeft!==-400){
-					//console.log("chuxian2 "+currentLeft);
 					gap = 4 + gap;
 				}
 				wrap.style.left = (currentLeft + gap*400)+"px";
